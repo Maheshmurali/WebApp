@@ -1,11 +1,51 @@
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% tailwind_css %}
 </head>
-<body>
-    <h1>user</h1>
+<body class="bg-slate-300">
+    <div id="container" class="flex h-screen w-full md:h-screen justify-center items-center flex-col gap-10">
+        <div class="border-1 shadow-md h-72 w-full md:w-3/6 rounded-b-full flex justify-center relative bg-blue-600">
+            <h3 class="my-52 text-4xl text-white" id="headLogin">LogIn!</h3>
+            <h3 class="my-52 text-4xl text-white hidden" id="headSignup">SignUp!</h3>
+        </div>
+        <div id="formDiv" class="flex flex-col border-1 h-3/4 md:h-23/4 w-3/4  items-center  shadow-2xl rounded-lg md:pb-10">
+            <form id="loginForm" action="" class="flex  items-center flex-col gap-3 w-1/2 md:w-3/4 my-10">
+                <input class="md:w-3/4 md:h-12 h-12 rounded-lg hover:shadow-xl hover:border-none indent-3 md:indent-5 " type="text" placeholder="Mobile Number">
+                <button class="bg-blue-800 p-2 rounded-md hover:shadow-xl text-white">Get OTP</button>
+                <p class="text-lg">Creator's Corner </p>
+                <div class="w-52 md:w-96 h-12 rounded-lg text-center flex justify-center py-3 bg-slate-400 hover:shadow-xl border-2" onclick="signUp()">
+                    <p class="text-white cursor-pointer">Creat An Account With </p>
+                </div>
+                <div class="w-52 md:w-96 h-12 rounded-lg text-center flex justify-center py-3 bg-slate-400 hover:shadow-xl border-2">
+                    <p class="text-white cursor-pointer">SignIn With Google </p>
+                </div>
+                <div class="w-52 md:w-96 h-12 rounded-lg text-center flex justify-center py-3 bg-slate-400 hover:shadow-xl border-2 duration-200">
+                    <p class="text-white cursor-pointer">SignIn With Facebook </p>
+                </div>
+            </form> 
+            <form id="signupForm" action="" class="flex  items-center flex-col gap-3 w-1/2 md:w-3/4 my-10 hidden">
+                <p class="text-lg">Creator's Corner!</p>
+                <input class="md:w-3/4 md:h-12 h-12 rounded-lg hover:shadow-xl hover:border-none indent-3 md:indent-5 mt-8" type="text" placeholder="Full Name">
+                <input class="md:w-3/4 md:h-12 h-12 rounded-lg hover:shadow-xl hover:border-none indent-3 md:indent-5 " type="text" placeholder="Mobile/Email">
+                <input class="md:w-3/4 md:h-12 h-12 rounded-lg hover:shadow-xl hover:border-none indent-3 md:indent-5 " type="text" placeholder="Password">
+                <input class="md:w-3/4 md:h-12 h-12 rounded-lg hover:shadow-xl hover:border-none indent-3 md:indent-5 " type="text" placeholder="Confirm Password">
+                <span class="md:mr-80 ml-[-70px]"><input type="checkbox">&nbsp;Privacy & Policy</span>
+                <button class="bg-blue-800 p-2 rounded-md hover:shadow-xl text-white mt-6">Get Start !</button>
+                
+            </form> 
+        </div>
+        <div class="md:flex justify-between w-3/4 items-center text-center" >
+            <p class="cursor-pointer hover:text-blue-700 duration-500">About</p>
+            <p class="cursor-pointer hover:text-blue-700 duration-500">Privacy</p>
+            <p class="cursor-pointer hover:text-blue-700 duration-500">Join with Us</p>
+        </div>
+        <div><p class="my-[-2rem]"> All Rights Reserved</p></div>
+    </div>
+    <script src="{% static 'js/user.js' %}"></script>
 </body>
-</html>
+</html> 
