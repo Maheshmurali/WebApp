@@ -813,6 +813,10 @@ select {
   margin-top: 2rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -950,10 +954,6 @@ select {
   text-indent: 1.25rem;
 }
 
-.indent-3 {
-  text-indent: 0.75rem;
-}
-
 .font-serif {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
@@ -984,6 +984,21 @@ select {
 
 .tracking-normal {
   letter-spacing: 0em;
+}
+
+.text-blue-700 {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity));
+}
+
+.text-green-700 {
+  --tw-text-opacity: 1;
+  color: rgb(21 128 61 / var(--tw-text-opacity));
+}
+
+.text-red-700 {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -1057,9 +1072,5 @@ select {
 
   .md\:pb-10 {
     padding-bottom: 2.5rem;
-  }
-
-  .md\:indent-5 {
-    text-indent: 1.25rem;
   }
 }
