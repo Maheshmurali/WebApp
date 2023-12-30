@@ -30,9 +30,12 @@
                             <div id="userProfile" name="close" onclick="userProfile(this)">
                                 <img class="border-2 border-gray-900 rounded-full w-10 h-10 mt-[-0.5rem] hover:transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 hover:shadow-transparent" src="" alt="">
                                 <ul id="userProfileUl" class="my-4 absolute z-1 mx-[-3rem] md:mx-[-1rem] rounded-xl p-4 w-24 backdrop-blur-3xl hidden">
+                                    {% if user %}
+                                    <li class="p-2 text-white hover:text-yellow-300 hover:transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500"><a href="">{{user.username}}</a></li>
+                                    {% endif %}
                                     <li class="p-2 text-white hover:text-yellow-300 hover:transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500"><a href="">Profile</a></li>
                                     <li class="p-2 text-white hover:text-yellow-300 hover:transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500"><a href="">Fav</a></li>
-                                    <li class="p-2 text-white hover:text-yellow-300 hover:transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500"><a href="">Logout</a></li>
+                                    <li class="p-2 text-white hover:text-yellow-300 hover:transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500"><a href="{%url 'logout' %}">Logout</a></li>
                                 </ul>
                             </div> 
                             </ul> 
@@ -123,6 +126,6 @@
               </div>
            </footer>
     </div>
-    <script src="{% static 'js/user.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
 </body>
 </html>
