@@ -1,0 +1,69 @@
+{% extends 'layouts.html' %}
+{% load static tailwind_tags %}
+{% block bodyblock %}
+    <div class="flex flex-col md:flex-row md:p-8 bg-gradient-to-t from-amber-200 to-yellow-500 scroll-smooth">
+<!-----------------------------------------left screen---------------------------------------------------------------------------->
+        <div id="leftMain" class=" w-12/12 md:w-9/12 h-auto md:mx-4">
+            <div id="screen" class="w-full shadow-xl md:rounded-xl">
+                <video class="w-full md:h-96  md:rounded-xl" src=""></video>
+            </div>
+            <div id="statusBar" class="w-full md:h-24 md:rounded-xl my-4 shadow-xl
+             flex flex-col md:flex-row md:p-6 justify-between py-4 px-4 flex-wrap md:flex-wrap">
+                <div class="flex w-3/12">
+                    <img class="border-2 w-12 h-12 rounded-full pl-12" src="" alt="">
+                    <p class="my-2 ml-4">name</p>
+                </div>
+                <ul class="flex justify-evenly w-8/12 mx-14 mt-4 md:mt-0 md:mx-0">
+                    <li class="md:px-4 px-4 mx-4 rounded-full p-4 cursor-pointer">
+                        <svg id="like" onclick="likeCount()"  xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-heart-fill hover:transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:fill-red-600 duration-500 " viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                          </svg>
+                          <span id="heartCount" class="mx-2">0</span>
+                    </li>
+                    <li  class=" md:px-4 px-4 mx-4 rounded-full p-4 cursor-pointer">
+                        <svg id="dislike" onclick="dislikeCount()" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-heartbreak-fill hover:transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:fill-red-600 duration-500" viewBox="0 0 16 16">
+                            <path d="M8.931.586 7 3l1.5 4-2 3L8 15C22.534 5.396 13.757-2.21 8.931.586ZM7.358.77 5.5 3 7 7l-1.5 3 1.815 4.537C-6.533 4.96 2.685-2.467 7.358.77Z"/>
+                          </svg><span id="brockCount" class="mx-2">0</span>
+                    </li>
+                    <li  class=" md:px-4 px-4 mx-4 rounded-full p-4 cursor-pointer">
+                        <svg id="share" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-envelope-open-heart-fill hover:transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:fill-yellow-900 duration-500" viewBox="0 0 16 16">
+                            <path d="M8.941.435a2 2 0 0 0-1.882 0l-6 3.2A2 2 0 0 0 0 5.4v.313l4.222 2.475c.024-.058.05-.114.08-.17.665-1.3 2.362-1.917 3.698-1.25 1.336-.667 3.033-.05 3.699 1.25a3.3 3.3 0 0 1 .08.17L16 5.713V5.4a2 2 0 0 0-1.059-1.765l-6-3.2ZM0 6.873l4 2.344c-.012.542.124 1.117.416 1.694l.004.006L0 13.372v-6.5Zm.059 7.611 4.9-2.723c.563.73 1.383 1.467 2.49 2.198l.551.365.551-.365c1.107-.73 1.927-1.467 2.49-2.198l4.9 2.723A2 2 0 0 1 14 16H2a2 2 0 0 1-1.941-1.516ZM16 13.372l-4.42-2.455.004-.006c.292-.577.428-1.152.415-1.694L16 6.873v6.5Z"/>
+                            <path d="M8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
+                          </svg>
+                    </li>
+                    <li  class="md:px-4 px-4 mx-4 rounded-full p-4 cursor-pointer">
+                        <svg id="save" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-cloud-download-fill hover:transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:fill-blue-600 hover:animate-bounce duration-500" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 4.095 0 5.555 0 7.318 0 9.366 1.708 11 3.781 11H7.5V5.5a.5.5 0 0 1 1 0V11h4.188C14.502 11 16 9.57 16 7.773c0-1.636-1.242-2.969-2.834-3.194C12.923 1.999 10.69 0 8 0m-.354 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V11h-1v3.293l-2.146-2.147a.5.5 0 0 0-.708.708z"/>
+                          </svg>
+                    
+                    </li>
+                </ul>
+            
+            </div>
+            <div class="hidden">
+                <form method="post" enctype="multipart/form-data" action="">
+                    <input id="heartinput" name="like" type="text">
+                    <input id="brockinput" name="dislike" type="text">
+                </form>
+            </div>
+            <div id="details" class="w-full border-2 border-yellow-600 h-screen hidden md:block md:rounded-xl shadow-xl">
+
+            </div>
+        </div>
+<!----------------------------------------------right-screen---------------------------------------------------------------------->
+        <div id="rightMain" class="md:w-3/12 w-12/12 md:rounded-xl flex align-middle flex-col md:mx-2" >
+            <div class="w-full border-2 border-yellow-600 h-72 md:h-48 my-4 md:my-0 md:rounded-xl shadow-xl">
+
+            </div>
+            <div class="w-full border-2 border-yellow-600 h-72 md:h-48 my-2 md:rounded-xl" >
+
+            </div>
+            <div class="w-full border-2 border-yellow-600 h-72 md:h-48 my-2 md:rounded-xl">
+
+            </div>
+        </div>
+     </div>
+     <script src="{% static 'js/view.js' %}"></script>
+     {% endblock %}  
+</body>
+</html>
