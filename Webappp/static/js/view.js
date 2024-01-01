@@ -1,18 +1,67 @@
-var likeCounter = 0;
-var dislikeCounter = 0;
-function likeCount(){
-    likeCounter = likeCounter+1;
-    document.querySelector("#like").classList.add("fill-red-600");
-    document.querySelector("#heartCount").innerHTML=likeCounter;
-    document.querySelector("#heartinput").value=likeCounter;
-}
+var likeCount = 0;
+var dislikeCount = 0;
 
-function dislikeCount(){
-    dislikeCounter = dislikeCounter+1;
-    document.querySelector("#dislike").classList.add("fill-red-600");
-    document.querySelector("#brockCount").innerHTML=dislikeCounter;
-    document.querySelector("#brockinput").value=dislikeCounter;
+
+var liker = document.querySelector("#like");
+var attribName = liker.attributes[1];
+liker.addEventListener('click',function(){
+    if (attribDis !== "nodislike"){
+        if (attribName == "nolike"){
+            liker.setAttribute("fill","white");
+            likeCount = likeCount-1;
+            document.querySelector("#heartCount").innerText = likeCount;
+            document.querySelector("#heartinput").value = likeCount;
+            attribName = 'like';
+        }else{
+            liker.setAttribute("fill","red");
+            likeCount = likeCount+1;
+            document.querySelector("#heartCount").innerText = likeCount;
+            document.querySelector("#heartinput").value = likeCount;
+            attribName = "nolike";
+        }
+}else{
+    disliker.setAttribute("fill","white")
+        dislikeCount = dislikeCount-1
+        document.querySelector("#brockCount").innerText = dislikeCount;
+        document.querySelector("#brockinput").value = dislikeCount;
+        attribDis = 'dislike';
+        liker.setAttribute("fill","red");
+        likeCount = likeCount+1;
+        document.querySelector("#heartCount").innerText = likeCount;
+        document.querySelector("#heartinput").value = likeCount;
+        attribName = "nolike";
 }
+})
+var disliker = document.querySelector("#dislike");
+var attribDis = disliker.attributes[1];
+disliker.addEventListener('click',function(){
+    if (attribName !== "nolike"){
+        if (attribDis == "nodislike"){
+        disliker.setAttribute("fill","white")
+        dislikeCount = dislikeCount-1
+        document.querySelector("#brockCount").innerText = dislikeCount;
+        document.querySelector("#brockinput").value = dislikeCount;
+        attribDis = 'dislike';
+    }else {
+        disliker.setAttribute("fill","red")
+        dislikeCount = dislikeCount+1
+        document.querySelector("#brockCount").innerText = dislikeCount;
+        document.querySelector("#brockinput").value = dislikeCount;
+        attribDis = 'nodislike';
+        }
+}else{
+     liker.setAttribute("fill","white");
+    likeCount = likeCount-1;
+    document.querySelector("#heartCount").innerText = likeCount;
+    document.querySelector("#heartinput").value = likeCount;
+    attribName = 'like';
+    disliker.setAttribute("fill","red")
+    dislikeCount = dislikeCount+1
+    document.querySelector("#brockCount").innerText = dislikeCount;
+    document.querySelector("#brockinput").value = dislikeCount;
+    attribDis = 'nodislike';
+}
+})
 
 function userProfile(e) {
     if (e.name == "close"){
