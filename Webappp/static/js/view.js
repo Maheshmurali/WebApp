@@ -1,6 +1,6 @@
-var likeCount = 0;
-var dislikeCount = 0;
-
+var likeCount = Number(document.querySelector("#heartCount").innerText);
+var dislikeCount = Number(document.querySelector("#brockCount").innerText);
+console.log(typeof likeCount)
 
 var liker = document.querySelector("#like");
 var attribName = liker.attributes[1];
@@ -39,13 +39,13 @@ disliker.addEventListener('click',function(){
         if (attribDis == "nodislike"){
         disliker.setAttribute("fill","white")
         dislikeCount = dislikeCount-1
-        document.querySelector("#brockCount").innerText = dislikeCount;
+         document.querySelector("#brockCount").innerText = dislikeCount;
         document.querySelector("#brockinput").value = dislikeCount;
         attribDis = 'dislike';
     }else {
         disliker.setAttribute("fill","red")
         dislikeCount = dislikeCount+1
-        document.querySelector("#brockCount").innerText = dislikeCount;
+         document.querySelector("#brockCount").innerText = dislikeCount;
         document.querySelector("#brockinput").value = dislikeCount;
         attribDis = 'nodislike';
         }
@@ -73,4 +73,47 @@ function userProfile(e) {
     e.name = "close"
 }
 }
-  
+
+
+//like comments updates
+
+var like = document.querySelector("#like");
+var dislike = document.querySelector("#dislike");
+
+$(document).ready(function(){
+    $('#like').click(function(){
+        var formData = $('#updateForm').serialize();
+
+        $.ajax({
+            type : "POST",
+            url : "/update/",
+            data : formData,
+            success :function(data){
+                console.log(data)
+                var like = data.current_likes
+                console.log(like)
+                $('#heartCount').text(JSON.stringify(like)); 
+            },
+            error: function(error){
+                console.log(error)
+            }
+        });
+    });
+    $('#dislike').click(function(){
+        var formData = $('#updateForm').serialize();
+
+        $.ajax({
+            type : "POST",
+            url : "/update/",
+            data : formData,
+            success :function(data){
+                console.log(data)
+                var dislike = data.current_dislikes
+                $('#brockCount').text(JSON.stringify(dislike)); 
+            },
+            error: function(error){
+                console.log(error)
+            }
+        });
+    });
+});

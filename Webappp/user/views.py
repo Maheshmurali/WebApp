@@ -15,7 +15,7 @@ def user_login(request):
             email = request.POST['mobile']
             password = request.POST['conpassword']
             try:
-                user = User.objects.create_user(username=email,password=password)
+                user = User.objects.create_user(username=email,password=password,first_name=fullname)
                 return redirect("user")
             except Exception as e:
                 error_message = str(e)
